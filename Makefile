@@ -21,12 +21,12 @@ LOGPATH = ./LOG/
 
 .PHONY: all clean
 
-all: EXE_MEM
+all: EXE
 
 $(OBJPATH)%.o: $(SRCPATH)%.c
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCPATH)
 
-EXE_MEM: $(OBJPATH)main.o $(OBJPATH)MLP_5Ls.o $(OBJPATH)my_mat.o
+EXE: $(OBJPATH)main.o $(OBJPATH)MLP_3Ls.o $(OBJPATH)my_mat.o
 	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 clean:

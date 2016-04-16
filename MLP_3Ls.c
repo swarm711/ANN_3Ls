@@ -9,7 +9,7 @@
  ************************************/
 
 #include "MLP_3Ls.h"
-#include <assert.h>
+
 //#define PERC // Uncomment this if perceptron is wanted
 
 /******************************************************
@@ -134,7 +134,7 @@ float cost1(const float target[], float output[]){
     float delta = 0.0;
     float cost1 = 0.0;
     int i;
-    for(i=0;i!=N_5;++i){
+    for(i=0;i!=N_3;++i){
         delta = target[i] - output[i];
         cost1 += 0.5*delta*delta;
     }

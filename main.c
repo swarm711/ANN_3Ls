@@ -9,18 +9,15 @@
  * By Jang-Hau Lin           *
  *****************************/
 
-#include <assert.h>
-#include <sys/types.h>
-#include <unistd.h>
 #include "MLP_3Ls.h"
 
-#define TRAIN_MODE 1
-#define Ntrains 100
+#define TRAIN_MODE 1 // 0 for test; 1 for training
+#define Ntrains 100 // run the entire dataset for Ntrains times
 
 int main(int argc, char *argv[]){
-    srand(time(NULL));
+    srand(time(NULL)); // set random seed for shuffling the dataset
 // Declarations
-    int counter1 = 0;
+    int counter1 = 0; // The counter for plotting learning curve
     float alpha = 0.25; // Learning rate
 
     /* Weights */
@@ -54,8 +51,10 @@ int main(int argc, char *argv[]){
     if(!TRAIN_MODE) readWeights("./LOG/_weights_all_tr_b_10.bin", &my_NNet2); // All training sets, 100 iterations, batch-size = 10
 
     /* The training/test dataset*/
-    char * trLfile = "<the path to the training label dataset >/train-labels-idx1-ubyte";
-    char * trIfile = "<the path to the training image dataset >/train-images-idx3-ubyte";
+    //char * trLfile = "<the path to the training label dataset >/train-labels-idx1-ubyte";
+    //char * trIfile = "<the path to the training image dataset >/train-images-idx3-ubyte";
+    char * trLfile = "/home/james/Codes/Cpp/MNIST/dataset/train/train-labels-idx1-ubyte";
+    char * trIfile = "/home/james/Codes/Cpp/MNIST/dataset/train/train-images-idx3-ubyte";
     char * teLfile = "<the path to the test label dataset >/t10k-labels-idx1-ubyte";
     char * teIfile = "<the path to the test image dataset >/t10k-images-idx3-ubyte";
     int fl, fi;
