@@ -1,7 +1,7 @@
 /************************************
  * Header of Multi-layer Perceptron *
  * save weightings in memory        *
- * 5 layers:                        *
+ * 3 layers:                        *
  *          1 input layer           *
  *          2 hidden layer          *
  *          3 output layer          *
@@ -14,7 +14,7 @@
 #include "my_mat.h"
 
 #define BATCH_SIZE 10 // size of mini-batch
-#define N_SAMPLES 1000 // The number of samples
+#define N_SAMPLES 100 // The number of samples
 
 #define N_1 28*28 // The number of nodes in the 1st layer
 #define N_2 1000 // The number of nodes in the hidden layer
@@ -24,8 +24,7 @@
 
 typedef struct NeuNet{
     /* arrange the weightings in the following format:
-      wt_1,1_2,1  wt_1,2_2,1  wt_1,3_2,1  wt_1,4,2,1  
-      wt_1,1_2,2  wt_1,2_2,2  wt_1,3_2,2  wt_1,4_2,2 ... 
+      wt_1,1_2,1  wt_1,2_2,1  wt_1,3_2,1  wt_1,4,2,1      wt_1,1_2,2  wt_1,2_2,2  wt_1,3_2,2  wt_1,4_2,2 ... 
      */
     float * wt12; // the weightings between layer 1 and 2
     float * wt23; // the weightings between layer 2 and 3

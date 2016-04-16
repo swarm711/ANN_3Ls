@@ -2,7 +2,7 @@
  * Train a Neural Network    *
  * plan implementation       *
  * save weightings in memory *
- * 5-layer:                  *
+ * 3-layer:                  *
  *         1 input layer     *
  *         2 hidden layer    *
  *         3 output layer    *
@@ -51,10 +51,10 @@ int main(int argc, char *argv[]){
     if(!TRAIN_MODE) readWeights("./LOG/_weights_all_tr_b_10.bin", &my_NNet2); // All training sets, 100 iterations, batch-size = 10
 
     /* The training/test dataset*/
-    //char * trLfile = "<the path to the training label dataset >/train-labels-idx1-ubyte";
-    //char * trIfile = "<the path to the training image dataset >/train-images-idx3-ubyte";
-    char * trLfile = "/home/james/Codes/Cpp/MNIST/dataset/train/train-labels-idx1-ubyte";
-    char * trIfile = "/home/james/Codes/Cpp/MNIST/dataset/train/train-images-idx3-ubyte";
+    char * trLfile = "<the path to the training label dataset >/train-labels-idx1-ubyte";
+    char * trIfile = "<the path to the training image dataset >/train-images-idx3-ubyte";
+    //char * teLfile = "/home/james/Codes/Cpp/MNIST/dataset/train/train-labels-idx1-ubyte";
+    //char * teIfile = "/home/james/Codes/Cpp/MNIST/dataset/train/train-images-idx3-ubyte";
     char * teLfile = "<the path to the test label dataset >/t10k-labels-idx1-ubyte";
     char * teIfile = "<the path to the test image dataset >/t10k-images-idx3-ubyte";
     int fl, fi;
@@ -94,13 +94,13 @@ int main(int argc, char *argv[]){
     int k,i;
     for(k=0;k!=Ntrains;++k){
         /* If training, shuffle the dataset for stochastic mini-batch */
-        if(TRAIN_MODE) shufArr(indexArr, N_SAMPLES);
+        shufArr(indexArr, N_SAMPLES);
 
         for(i=0;i!=N_SAMPLES;++i){
             ++counter;
             /* Read the training/test dataset, one pair of image and label at a time*/
-            if(TRAIN_MODE) lseek(fi, 16 + indexArr[i]*ilen, SEEK_SET);
-            if(TRAIN_MODE) lseek(fl, 8 + indexArr[i]*1, SEEK_SET);
+            lseek(fi, 16 + indexArr[i]*ilen, SEEK_SET);
+            lseek(fl, 8 + indexArr[i]*1, SEEK_SET);
             c = read(fi, image, ilen);
             c = read(fl, &byte, sizeof(byte));
             target[byte] = 1.0; // Set the target array corresponding to the label

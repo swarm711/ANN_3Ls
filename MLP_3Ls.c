@@ -1,7 +1,7 @@
 /************************************
  * Source of Multi-layer Perceptron *
  * save weightings in memory        *
- * 5 layers:                        *
+ * 3 layers:                        *
  *          1 input layer           *
  *          2 hidden layer          *
  *          3 output layer          *
